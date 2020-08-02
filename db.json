@@ -1,0 +1,16 @@
+{
+    "categorias": [
+        {
+      "id": 1,
+     "nome": "Front-End",
+     "cor": "#6BD1FF",
+     "descricao": "uma categoria bacana"
+      },
+      {
+        "id": 1,
+        "nome": "outro",
+        "cor": "#6BD1FF",
+        "descricao": "outra categoria bacana"
+      }
+  ]
+}
