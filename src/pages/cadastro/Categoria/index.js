@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import PageDefault from '../../../components/PageDefault'
 import FormField from '../../../components/FormField'
 import Button from '../../../components/Button'
+import useForm from '../../../hooks/useForm'
+
 
 function CadastroCategoria() {
   /* guardar as categorias */
@@ -14,26 +16,16 @@ function CadastroCategoria() {
     descricao: '',
     color: '',
   }
+  const { handleChange,values, clearForm } = useForm(valoresIniciais)
+
   const [valores, setValores] = useState(valoresIniciais)
 
- function setValor(chave, valor) {
-   setValores({
-     ...valores,
-     [chave]: valor,
-   })
- }
-
- function handleChange(infoEvento){
-  setValor(
-    infoEvento.target.getAttribute('name'),
-    infoEvento.target.value,
-     )
- }
 
  useEffect(() => {
-   console.log('alo')
    /* Fetch - buscar dados ou pegar coisas */
-   const URL_TOP = 'http://localhost:8080/categorias'
+   const URL_TOP = window.location.hostname.includes('localhost')
+   ? 'http://localhost:8080/categorias'
+   : 'https://taynetflix.herokuapp.com/categorias'
    fetch(URL_TOP)
    .then(async (responstaDoServidor) => {
      const resposta = await responstaDoServidor.json()
@@ -72,7 +64,7 @@ return (
         ...categorias,
         valores
             ])
-        setValores(valoresIniciais)
+        clearForm()
         /*({setValores}) */
     
      }}>
@@ -117,8 +109,8 @@ return (
    <ul>
     {categorias.map((categoria) => {
       return (
-        <li key={categoria}>
-        {categoria.nome}
+        <li key={categoria.titulo}>
+        {categoria.titulo}
         </li>
       )
     })}
