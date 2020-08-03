@@ -11,10 +11,10 @@ function useForm(valoresIniciais) {
     }
    
     function handleChange(infoEvento){
-     setValor(
-       infoEvento.target.getAttribute('name'),
-       infoEvento.target.value,
-        )
+      const novoValor = {
+        ...valores }
+        novoValor[infoEvento.target.name] = infoEvento.target.value
+     setValores(novoValor)
     }
     function clearForm() {
       setValores(valoresIniciais)

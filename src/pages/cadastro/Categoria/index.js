@@ -16,9 +16,9 @@ function CadastroCategoria() {
     descricao: '',
     color: '',
   }
-  const { handleChange,values, clearForm } = useForm(valoresIniciais)
+  const { handleChange, clearForm, valores } = useForm(valoresIniciais)
 
-  const [valores, setValores] = useState(valoresIniciais)
+ 
 
 
  useEffect(() => {
@@ -28,6 +28,7 @@ function CadastroCategoria() {
    : 'https://taynetflix.herokuapp.com/categorias'
    fetch(URL_TOP)
    .then(async (responstaDoServidor) => {
+
      const resposta = await responstaDoServidor.json()
      setCategorias([
        ...resposta,
@@ -109,7 +110,7 @@ return (
    <ul>
     {categorias.map((categoria) => {
       return (
-        <li key={categoria.titulo}>
+        <li key={`${categoria.titulo}`}>
         {categoria.titulo}
         </li>
       )
