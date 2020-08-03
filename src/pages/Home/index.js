@@ -14,6 +14,7 @@ function Home() {
  useEffect(() => {
    categoriaRepositorio.getAllCategoriesVideos()
    .then((categoriascomVideo) => {
+    
     setDadosIniciais(categoriascomVideo)
 
    })
@@ -25,14 +26,17 @@ function Home() {
   //http://localhost:8080/categorias?_embed=videos
   return (
     <PageDefault paddingAll={0}>
+  <h1>{dadosIniciais.videos[0].title}</h1>
      {dadosIniciais.length === 0 && (<div>Loading..</div>)}
 
      {dadosIniciais.map((categoria, indice) => {
       if (indice === 0) {
         return (
           <div key={categoria.id}>
+              <h1>{categoria.videos[0].title}</h1>
+           
             <BannerMain
-              videoTitle={dadosIniciais[0].videos[0].titulo}
+              videoTile= {dadosIniciais[0].videos[0].titulo}
               url={dadosIniciais[0].videos[0].url}
               videoDescription={dadosIniciais[0].videos[0].description}
             />

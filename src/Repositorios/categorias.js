@@ -1,6 +1,6 @@
 import config from '../config'
 
-const URL_CATEGORIA = `${config.URL_BACKEND_TOP}`
+const URL_CATEGORIA = `${config.URL_BACKEND_TOP}/categorias`
 
 function getAllCategoriesVideos() {
       /* Fetch - buscar dados ou pegar coisas */
